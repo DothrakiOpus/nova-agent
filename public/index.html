@@ -10,46 +10,40 @@
   html,body{height:100%;overflow:hidden;background:#05050E;font-family:'Inter',sans-serif;color:#E8E6F2;-webkit-text-size-adjust:100%;}
   @keyframes orbFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-14px)}}
   @keyframes ambientGlow{0%,100%{opacity:0.5;transform:scale(1)}50%{opacity:1;transform:scale(1.1)}}
-  @keyframes ring1{0%,100%{opacity:0.1;transform:scale(1)}50%{opacity:0.22;transform:scale(1.03)}}
-  @keyframes ring2{0%,100%{opacity:0.06;transform:scale(1)}50%{opacity:0.14;transform:scale(1.05)}}
-  @keyframes ring3{0%,100%{opacity:0.03;transform:scale(1)}50%{opacity:0.09;transform:scale(1.07)}}
+  @keyframes ring1{0%,100%{opacity:0.1}50%{opacity:0.22}}
+  @keyframes ring2{0%,100%{opacity:0.06}50%{opacity:0.14}}
+  @keyframes ring3{0%,100%{opacity:0.03}50%{opacity:0.09}}
   @keyframes dot{0%,100%{transform:translateY(0);opacity:0.4}50%{transform:translateY(-6px);opacity:1}}
-  @keyframes fadeIn{from{opacity:0}to{opacity:1}}
   @keyframes slideUp{from{transform:translateY(100%);opacity:0}to{transform:none;opacity:1}}
   @keyframes twinkle{0%,100%{opacity:0.08}50%{opacity:0.45}}
-  @keyframes spin{to{transform:rotate(360deg)}}
 
   #app{height:100svh;display:flex;flex-direction:column;position:relative;overflow:hidden;}
   #stars{position:absolute;inset:0;pointer-events:none;}
   .star{position:absolute;border-radius:50%;background:#C4A8FF;}
-
   header{padding:16px 24px 14px;display:flex;align-items:center;justify-content:space-between;flex-shrink:0;position:relative;z-index:10;}
   .logo-name{font-family:'Bebas Neue',sans-serif;font-size:24px;letter-spacing:.18em;color:#F8F7FF;line-height:1;}
   .logo-sub{font-size:9px;letter-spacing:.22em;text-transform:uppercase;color:#7A7890;margin-top:1px;}
   .btn-stop{background:rgba(123,79,232,0.2);border:1px solid rgba(123,79,232,0.5);border-radius:8px;padding:7px 14px;cursor:pointer;font-size:12px;color:#C4A8FF;font-family:inherit;display:none;}
   .btn-reset{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1);border-radius:8px;padding:7px 12px;cursor:pointer;font-size:12px;color:#7A7890;font-family:inherit;display:none;}
-
   #orb-screen{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:0 24px 60px;position:relative;}
   #orb-wrap{cursor:pointer;-webkit-tap-highlight-color:transparent;position:relative;width:240px;height:240px;display:flex;align-items:center;justify-content:center;}
   .ambient{position:absolute;width:380px;height:380px;border-radius:50%;background:radial-gradient(circle,rgba(123,79,232,0.2) 0%,transparent 70%);animation:ambientGlow 3.5s ease-in-out infinite;pointer-events:none;}
-  .ring{position:absolute;border-radius:50%;pointer-events:none;transition:all 0.08s ease;}
-  .ring1{width:226px;height:226px;border:1.5px solid #9B6FFF;}
-  .ring2{width:264px;height:264px;border:1px solid #7B4FE8;}
-  .ring3{width:302px;height:302px;border:1px solid #7B4FE8;}
-  #orb-core{width:180px;height:180px;border-radius:50%;background:radial-gradient(circle at 33% 33%,#7B4FE8,#3A0FA0,#0D0425);transition:transform 0.06s ease,background 0.5s ease;box-shadow:0 0 60px rgba(123,79,232,0.75),0 0 120px rgba(123,79,232,0.4),0 0 180px rgba(123,79,232,0.2),inset 0 0 50px rgba(255,255,255,0.07);animation:orbFloat 4.5s ease-in-out infinite;display:flex;align-items:center;justify-content:center;}
-  .orb-highlight{width:60px;height:60px;border-radius:50%;background:radial-gradient(circle,rgba(255,255,255,0.25) 0%,transparent 70%);transform:translate(-24px,-24px);pointer-events:none;}
+  .ring{position:absolute;border-radius:50%;pointer-events:none;}
+  .ring1{width:226px;height:226px;border:1.5px solid #9B6FFF;animation:ring1 1.5s ease-in-out infinite;}
+  .ring2{width:264px;height:264px;border:1px solid #7B4FE8;animation:ring2 1.9s ease-in-out infinite;}
+  .ring3{width:302px;height:302px;border:1px solid #7B4FE8;animation:ring3 2.3s ease-in-out infinite;}
+  #orb-core{width:180px;height:180px;border-radius:50%;background:radial-gradient(circle at 33% 33%,#7B4FE8,#3A0FA0,#0D0425);transition:transform 0.06s ease,background 0.5s ease;box-shadow:0 0 60px rgba(123,79,232,0.75),0 0 120px rgba(123,79,232,0.4),inset 0 0 50px rgba(255,255,255,0.07);animation:orbFloat 4.5s ease-in-out infinite;display:flex;align-items:center;justify-content:center;}
+  .orb-highlight{width:60px;height:60px;border-radius:50%;background:radial-gradient(circle,rgba(255,255,255,0.25) 0%,transparent 70%);transform:translate(-24px,-24px);}
   #thinking-dots{position:absolute;bottom:-48px;display:none;gap:7px;}
   .dot{width:7px;height:7px;border-radius:50%;background:#9B6FFF;}
   .dot:nth-child(1){animation:dot 1.2s ease-in-out 0s infinite;}
   .dot:nth-child(2){animation:dot 1.2s ease-in-out 0.2s infinite;}
   .dot:nth-child(3){animation:dot 1.2s ease-in-out 0.4s infinite;}
-
   #status{font-size:13px;letter-spacing:0.18em;color:#7A7890;text-transform:uppercase;font-family:monospace;margin-top:60px;transition:color 0.4s;}
   #hint{margin-top:16px;font-size:12px;color:#7A7890;text-align:center;line-height:1.7;max-width:260px;display:none;}
   #chrome-tip{position:absolute;bottom:28px;font-size:10px;color:#7A7890;opacity:0.3;text-align:center;letter-spacing:.08em;}
-
-  #doc-screen{position:fixed;inset:0;background:#05050E;display:none;flex-direction:column;animation:slideUp 0.55s cubic-bezier(0.16,1,0.3,1) both;z-index:200;}
-  #doc-screen.show{display:flex;}
+  #doc-screen{position:fixed;inset:0;background:#05050E;display:none;flex-direction:column;z-index:200;}
+  #doc-screen.show{display:flex;animation:slideUp 0.55s cubic-bezier(0.16,1,0.3,1) both;}
   #doc-header{padding:16px 20px;border-bottom:1px solid rgba(123,79,232,0.25);background:rgba(5,5,14,0.97);display:flex;align-items:center;justify-content:space-between;flex-shrink:0;}
   .btn-back{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.12);border-radius:10px;padding:8px 14px;cursor:pointer;font-size:13px;color:#E8E6F2;font-family:inherit;}
   #doc-badge{text-align:center;}
@@ -61,7 +55,7 @@
   #doc-text{height:100%;overflow-y:auto;background:rgba(0,0,0,0.4);border:1px solid rgba(123,79,232,0.2);border-radius:12px;padding:20px 18px;font-size:12px;line-height:2.1;color:#E8E6F2;white-space:pre-wrap;font-family:'Courier New',monospace;}
   #doc-edit{width:100%;height:100%;background:rgba(123,79,232,0.05);border:1.5px solid rgba(123,79,232,0.4);border-radius:12px;padding:18px;color:#E8E6F2;font-size:12px;font-family:'Courier New',monospace;line-height:2;resize:none;outline:none;display:none;}
   #doc-actions{padding:14px 20px 28px;border-top:1px solid rgba(123,79,232,0.18);display:flex;flex-direction:column;gap:10px;flex-shrink:0;background:rgba(5,5,14,0.97);}
-  .btn-copy{width:100%;background:linear-gradient(135deg,#7B4FE8,#9B6FFF);border:none;border-radius:14px;padding:17px;cursor:pointer;font-family:inherit;font-size:16px;font-weight:700;color:#F8F7FF;box-shadow:0 6px 28px rgba(123,79,232,0.55);transition:all .2s;letter-spacing:0.05em;}
+  .btn-copy{width:100%;background:linear-gradient(135deg,#7B4FE8,#9B6FFF);border:none;border-radius:14px;padding:17px;cursor:pointer;font-family:inherit;font-size:16px;font-weight:700;color:#F8F7FF;box-shadow:0 6px 28px rgba(123,79,232,0.55);transition:all .2s;}
   .btn-copy.copied{background:rgba(123,79,232,0.35);box-shadow:none;color:#9B6FFF;}
   #doc-row{display:flex;gap:10px;}
   .btn-print,.btn-restart{flex:1;background:rgba(255,255,255,.04);border:1.5px solid rgba(255,255,255,.1);border-radius:12px;padding:14px;cursor:pointer;font-size:13px;color:#7A7890;font-family:inherit;}
@@ -70,7 +64,6 @@
 <body>
 <div id="app">
   <div id="stars"></div>
-
   <header>
     <div>
       <div class="logo-name">NOVA</div>
@@ -81,27 +74,21 @@
       <button class="btn-reset" id="btn-reset">✕</button>
     </div>
   </header>
-
   <div id="orb-screen">
     <div id="orb-wrap">
       <div class="ambient"></div>
-      <div class="ring ring1" id="ring1"></div>
-      <div class="ring ring2" id="ring2"></div>
-      <div class="ring ring3" id="ring3"></div>
-      <div id="orb-core">
-        <div class="orb-highlight"></div>
-      </div>
+      <div class="ring ring1"></div>
+      <div class="ring ring2"></div>
+      <div class="ring ring3"></div>
+      <div id="orb-core"><div class="orb-highlight"></div></div>
       <div id="thinking-dots">
-        <div class="dot"></div>
-        <div class="dot"></div>
-        <div class="dot"></div>
+        <div class="dot"></div><div class="dot"></div><div class="dot"></div>
       </div>
     </div>
     <div id="status">Tap the orb to begin</div>
     <div id="hint"></div>
     <div id="chrome-tip">Open in Chrome for best experience</div>
   </div>
-
   <div id="doc-screen">
     <div id="doc-header">
       <button class="btn-back" id="btn-back">← New</button>
@@ -125,25 +112,19 @@
     </div>
   </div>
 </div>
-
 <script>
-const NOVA_SYSTEM = `You are Nova, a warm, calm, highly professional AI voice assistant created by Opus TJK. You help UK care home managers create clinical documents through natural conversation.
+const NOVA_SYSTEM=`You are Nova, a warm, calm, highly professional AI voice assistant created by Opus TJK. You help UK care home managers create clinical documents through natural conversation. Your personality: calm, warm, authoritative, reassuring.
 
-Your personality: calm, warm, authoritative, reassuring. Like a brilliant senior colleague.
-
-CONVERSATION RULES:
+RULES:
 - Never ask more than 2 questions at once
-- Keep responses SHORT — you are speaking out loud, not writing
-- Be warm and natural, not robotic
-- When you have ALL the information needed, generate the document immediately
+- Keep responses SHORT — spoken out loud
+- When you have ALL info needed, generate the document
 
-INTRO: Greet warmly. Say you are Nova, created by Opus TJK. Ask which document they need: Handover Note, Incident Report, or CQC Prep.
+INTRO: Greet warmly. Say you are Nova, created by Opus TJK. Ask which document: Handover Note, Incident Report, or CQC Prep.
 
-WHEN READY TO GENERATE:
-Write exactly: GENERATING_DOCUMENT
-Then write the full document below it.
+WHEN READY: Write GENERATING_DOCUMENT on its own line, then the full document below.
 
-For HANDOVER NOTE:
+HANDOVER NOTE FORMAT:
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 HANDOVER NOTE
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -170,7 +151,7 @@ RISK FLAGS
 Document generated by Nova · Opus TJK
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-For INCIDENT REPORT:
+INCIDENT REPORT FORMAT:
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 INCIDENT REPORT
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -192,16 +173,15 @@ FOLLOW-UP ACTIONS
 1. [action]
 
 REPORTING OBLIGATIONS
-[who to inform]
+[who]
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 Document generated by Nova · Opus TJK
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-For CQC PREP:
+CQC PREP FORMAT:
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 CQC PREPARATION REPORT
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
 KEY RISK AREAS
 [risks]
 
@@ -220,125 +200,104 @@ PRIORITY ACTION PLAN
 Document generated by Nova · Opus TJK
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━`;
 
-// ── STATE ─────────────────────────────────────────────────
-let state    = 'idle';
-let messages = [];
-let audio    = null;
-let rec      = null;
-let volAnim  = null;
-let started  = false;
-let editing  = false;
-let docText  = '';
+let state='idle',messages=[],currentAudio=null,rec=null,volAnim=null,started=false,editing=false,docText='';
+let audioCtx=null;
 
-// ── STARS ─────────────────────────────────────────────────
-const starsEl = document.getElementById('stars');
+// Stars
+const starsEl=document.getElementById('stars');
 for(let i=0;i<45;i++){
   const s=document.createElement('div');
   s.className='star';
-  s.style.left=`${(i*37+13)%100}%`;
-  s.style.top=`${(i*53+7)%100}%`;
-  s.style.width=s.style.height=i%7===0?'2px':'1px';
-  s.style.opacity=0.07+(i%5)*0.05;
-  s.style.animation=`twinkle ${2+i%4}s ease-in-out ${i*0.25}s infinite`;
+  s.style.cssText=`left:${(i*37+13)%100}%;top:${(i*53+7)%100}%;width:${i%7===0?2:1}px;height:${i%7===0?2:1}px;opacity:${0.07+(i%5)*0.05};animation:twinkle ${2+i%4}s ease-in-out ${i*0.25}s infinite`;
   starsEl.appendChild(s);
 }
 
-// ── ELEMENTS ──────────────────────────────────────────────
-const orbCore   = document.getElementById('orb-core');
-const orbWrap   = document.getElementById('orb-wrap');
-const statusEl  = document.getElementById('status');
-const hintEl    = document.getElementById('hint');
-const dotsEl    = document.getElementById('thinking-dots');
-const chromeTip = document.getElementById('chrome-tip');
-const ring1     = document.getElementById('ring1');
-const ring2     = document.getElementById('ring2');
-const ring3     = document.getElementById('ring3');
-const docScreen = document.getElementById('doc-screen');
-const docTextEl = document.getElementById('doc-text');
-const docEditEl = document.getElementById('doc-edit');
-const btnStop   = document.getElementById('btn-stop');
-const btnReset  = document.getElementById('btn-reset');
-const btnBack   = document.getElementById('btn-back');
-const btnEdit   = document.getElementById('btn-edit');
-const btnCopy   = document.getElementById('btn-copy');
-const btnPrint  = document.getElementById('btn-print');
-const btnRestart= document.getElementById('btn-restart');
+const orbCore=document.getElementById('orb-core');
+const orbWrap=document.getElementById('orb-wrap');
+const statusEl=document.getElementById('status');
+const hintEl=document.getElementById('hint');
+const dotsEl=document.getElementById('thinking-dots');
+const chromeTip=document.getElementById('chrome-tip');
+const docScreen=document.getElementById('doc-screen');
+const docTextEl=document.getElementById('doc-text');
+const docEditEl=document.getElementById('doc-edit');
+const btnStop=document.getElementById('btn-stop');
+const btnReset=document.getElementById('btn-reset');
+const btnBack=document.getElementById('btn-back');
+const btnEdit=document.getElementById('btn-edit');
+const btnCopy=document.getElementById('btn-copy');
+const btnPrint=document.getElementById('btn-print');
+const btnRestart=document.getElementById('btn-restart');
 
-// ── ORB APPEARANCE ────────────────────────────────────────
 function setOrbState(s){
-  state = s;
-  dotsEl.style.display = s==='thinking' ? 'flex' : 'none';
-  orbCore.style.animation = s==='idle' ? 'orbFloat 4.5s ease-in-out infinite' : 'none';
-
-  const colors = {
-    idle:      'radial-gradient(circle at 33% 33%,#7B4FE8,#3A0FA0,#0D0425)',
-    listening: 'radial-gradient(circle at 33% 33%,#E87BCC,#7B2FAA,#1A0535)',
-    speaking:  'radial-gradient(circle at 33% 33%,#C4A8FF,#7B4FE8,#200A60)',
-    thinking:  'radial-gradient(circle at 33% 33%,#9B6FFF,#4A1FA8,#120430)',
+  state=s;
+  dotsEl.style.display=s==='thinking'?'flex':'none';
+  orbCore.style.animation=s==='idle'?'orbFloat 4.5s ease-in-out infinite':'none';
+  const colors={
+    idle:'radial-gradient(circle at 33% 33%,#7B4FE8,#3A0FA0,#0D0425)',
+    listening:'radial-gradient(circle at 33% 33%,#E87BCC,#7B2FAA,#1A0535)',
+    speaking:'radial-gradient(circle at 33% 33%,#C4A8FF,#7B4FE8,#200A60)',
+    thinking:'radial-gradient(circle at 33% 33%,#9B6FFF,#4A1FA8,#120430)',
   };
-  orbCore.style.background = colors[s] || colors.idle;
-
-  const ringOpacity = (s==='speaking'||s==='listening') ? 1 : s==='thinking' ? 0.6 : 0.4;
-  [ring1,ring2,ring3].forEach(r=>r.style.opacity=ringOpacity*0.3);
-
-  const statusMap = {
-    idle:      started ? 'Tap to speak' : 'Tap the orb to begin',
-    listening: '● Listening…',
-    thinking:  'Nova is thinking…',
-    speaking:  '◆ Nova is speaking…',
+  orbCore.style.background=colors[s]||colors.idle;
+  const statusMap={
+    idle:started?'Tap to speak':'Tap the orb to begin',
+    listening:'● Listening…',
+    thinking:'Nova is thinking…',
+    speaking:'◆ Nova is speaking…',
   };
-  statusEl.textContent = statusMap[s] || '';
-  const statusColors = {idle:'#7A7890',listening:'#D87BCC',thinking:'#C4A8FF',speaking:'#9B6FFF'};
-  statusEl.style.color = statusColors[s] || '#7A7890';
-
-  btnStop.style.display  = s==='speaking' ? 'block' : 'none';
-  btnReset.style.display = started ? 'block' : 'none';
-  chromeTip.style.display = started ? 'none' : 'block';
+  statusEl.textContent=statusMap[s]||'';
+  const statusColors={idle:'#7A7890',listening:'#D87BCC',thinking:'#C4A8FF',speaking:'#9B6FFF'};
+  statusEl.style.color=statusColors[s]||'#7A7890';
+  btnStop.style.display=s==='speaking'?'block':'none';
+  btnReset.style.display=started?'block':'none';
+  chromeTip.style.display=started?'none':'block';
 }
 
 function setVolume(v){
-  const scale = 1 + v*0.45;
-  orbCore.style.transform = `scale(${scale})`;
+  orbCore.style.transform=`scale(${1+v*0.45})`;
 }
 
-// ── CALL CLAUDE ───────────────────────────────────────────
+// Unlock audio context on first tap
+function unlockAudio(){
+  if(!audioCtx){
+    audioCtx=new AudioContext();
+    if(audioCtx.state==='suspended') audioCtx.resume();
+  }
+}
+
 async function callClaude(msgs){
-  const r = await fetch('/api/claude',{
+  const r=await fetch('/api/claude',{
     method:'POST',
     headers:{'Content-Type':'application/json'},
-    body: JSON.stringify({
-      model:'claude-sonnet-4-20250514',
-      max_tokens:1000,
-      system: NOVA_SYSTEM,
-      messages: msgs,
-    }),
+    body:JSON.stringify({model:'claude-sonnet-4-20250514',max_tokens:1000,system:NOVA_SYSTEM,messages:msgs}),
   });
-  const d = await r.json();
-  return d.content?.[0]?.text ?? '';
+  const d=await r.json();
+  return d.content?.[0]?.text??'';
 }
 
-// ── ELEVENLABS SPEAK ──────────────────────────────────────
-async function elSpeak(text, onEnd){
-  const clean = text.split('GENERATING_DOCUMENT')[0].trim();
-  if(!clean){ onEnd?.(); return; }
+async function elSpeak(text,onEnd){
+  const clean=text.split('GENERATING_DOCUMENT')[0].trim();
+  if(!clean){onEnd?.();return;}
   try{
-    const r = await fetch('/api/speak',{
+    // Ensure audio context is unlocked
+    unlockAudio();
+    const r=await fetch('/api/speak',{
       method:'POST',
       headers:{'Content-Type':'application/json'},
-      body: JSON.stringify({text:clean}),
+      body:JSON.stringify({text:clean}),
     });
-    const blob = await r.blob();
-    const url  = URL.createObjectURL(blob);
-    audio = new Audio(url);
-    setOrbState('speaking');
-
+    if(!r.ok) throw new Error(r.status);
+    const arrayBuf=await r.arrayBuffer();
+    // Decode and play via AudioContext to bypass autoplay
+    const decoded=await audioCtx.decodeAudioData(arrayBuf);
+    const source=audioCtx.createBufferSource();
+    source.buffer=decoded;
+    source.connect(audioCtx.destination);
     // Volume analysis
-    const ctx = new AudioContext();
-    const src = ctx.createMediaElementSource(audio);
-    const analyser = ctx.createAnalyser();
+    const analyser=audioCtx.createAnalyser();
     analyser.fftSize=256;
-    src.connect(analyser);
-    src.connect(ctx.destination);
+    source.connect(analyser);
     const tick=()=>{
       const d=new Uint8Array(analyser.frequencyBinCount);
       analyser.getByteFrequencyData(d);
@@ -346,34 +305,31 @@ async function elSpeak(text, onEnd){
       volAnim=requestAnimationFrame(tick);
     };
     tick();
-
-    audio.onended=()=>{
+    source.onended=()=>{
       cancelAnimationFrame(volAnim);
       setVolume(0);
-      URL.revokeObjectURL(url);
       onEnd?.();
     };
-    audio.play();
+    source.start(0);
+    setOrbState('speaking');
   }catch(e){
-    console.error(e);
+    console.error('Audio error:',e);
     onEnd?.();
   }
 }
 
-// ── LISTEN ────────────────────────────────────────────────
 function listen(msgs){
-  const SR = window.SpeechRecognition||window.webkitSpeechRecognition;
+  const SR=window.SpeechRecognition||window.webkitSpeechRecognition;
   if(!SR){
     hintEl.textContent='Open in Chrome for voice support';
     hintEl.style.display='block';
     setOrbState('idle');
     return;
   }
-  rec = new SR();
+  rec=new SR();
   rec.lang='en-GB';
   rec.continuous=false;
   rec.interimResults=false;
-
   rec.onstart=()=>{
     setOrbState('listening');
     navigator.mediaDevices.getUserMedia({audio:true}).then(stream=>{
@@ -391,7 +347,6 @@ function listen(msgs){
       tick();
     }).catch(()=>{});
   };
-
   rec.onresult=async(e)=>{
     cancelAnimationFrame(volAnim);
     setVolume(0);
@@ -416,19 +371,20 @@ function listen(msgs){
         });
       }
     }catch(err){
+      console.error(err);
       setOrbState('idle');
       hintEl.textContent='Something went wrong — tap to try again';
       hintEl.style.display='block';
     }
   };
-
-  rec.onerror=()=>{ cancelAnimationFrame(volAnim); setVolume(0); setOrbState('idle'); };
-  rec.onend=()=>{ cancelAnimationFrame(volAnim); setVolume(0); };
+  rec.onerror=()=>{cancelAnimationFrame(volAnim);setVolume(0);setOrbState('idle');};
+  rec.onend=()=>{cancelAnimationFrame(volAnim);setVolume(0);};
   rec.start();
 }
 
-// ── START ─────────────────────────────────────────────────
 async function start(){
+  // Unlock audio on first user interaction
+  unlockAudio();
   if(started){
     if(state==='idle') listen(messages);
     return;
@@ -447,6 +403,7 @@ async function start(){
       setTimeout(()=>listen(updatedMsgs),500);
     });
   }catch(e){
+    console.error(e);
     setOrbState('idle');
     started=false;
     hintEl.textContent='Failed to connect — tap to try again';
@@ -454,7 +411,6 @@ async function start(){
   }
 }
 
-// ── DOCUMENT ──────────────────────────────────────────────
 function showDocument(text){
   docText=text;
   docTextEl.textContent=text;
@@ -464,13 +420,11 @@ function showDocument(text){
 }
 
 function resetAll(){
-  if(audio){ audio.pause(); audio=null; }
+  if(audioCtx){try{audioCtx.close();}catch(e){} audioCtx=null;}
   cancelAnimationFrame(volAnim);
   setVolume(0);
   if(rec) rec.stop();
-  messages=[];
-  started=false;
-  editing=false;
+  messages=[];started=false;editing=false;
   docScreen.classList.remove('show');
   docTextEl.textContent='';
   docEditEl.value='';
@@ -481,18 +435,16 @@ function resetAll(){
   setOrbState('idle');
 }
 
-// ── EVENTS ────────────────────────────────────────────────
-orbWrap.addEventListener('click', start);
+orbWrap.addEventListener('click',start);
 btnStop.addEventListener('click',()=>{
-  if(audio){ audio.pause(); audio=null; }
+  if(audioCtx){try{audioCtx.close();}catch(e){} audioCtx=null;}
   cancelAnimationFrame(volAnim);
   setVolume(0);
   setOrbState('idle');
 });
-btnReset.addEventListener('click', resetAll);
-btnBack.addEventListener('click', resetAll);
-btnRestart.addEventListener('click', resetAll);
-
+btnReset.addEventListener('click',resetAll);
+btnBack.addEventListener('click',resetAll);
+btnRestart.addEventListener('click',resetAll);
 btnEdit.addEventListener('click',()=>{
   editing=!editing;
   if(editing){
@@ -507,24 +459,16 @@ btnEdit.addEventListener('click',()=>{
     btnEdit.textContent='✏ Edit';
   }
 });
-
 btnCopy.addEventListener('click',()=>{
   navigator.clipboard.writeText(docText).catch(()=>{});
   btnCopy.textContent='✓ Copied to clipboard';
   btnCopy.classList.add('copied');
-  setTimeout(()=>{
-    btnCopy.textContent='📋 Copy Document';
-    btnCopy.classList.remove('copied');
-  },2000);
+  setTimeout(()=>{btnCopy.textContent='📋 Copy Document';btnCopy.classList.remove('copied');},2000);
 });
-
 btnPrint.addEventListener('click',()=>{
   const w=window.open('','_blank');
-  w.document.write(`<html><head><title>Nova Document</title>
-  <style>body{font-family:'Courier New',monospace;font-size:13px;line-height:2;padding:40px;color:#111;white-space:pre-wrap;}</style>
-  </head><body>${docText.replace(/</g,'&lt;')}</body></html>`);
-  w.document.close();
-  w.print();
+  w.document.write(`<html><head><title>Nova Document</title><style>body{font-family:'Courier New',monospace;font-size:13px;line-height:2;padding:40px;color:#111;white-space:pre-wrap;}</style></head><body>${docText.replace(/</g,'&lt;')}</body></html>`);
+  w.document.close();w.print();
 });
 </script>
 </body>
