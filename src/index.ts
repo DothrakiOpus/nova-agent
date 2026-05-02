@@ -53,6 +53,11 @@ app.post('/api/speak', async (req, res) => {
         }),
       }
     );
+    if (!response.ok) {
+      const errText = await response.text();
+      console.error('ElevenLabs error:', response.status, errText);
+      return res.status(502).json({ error: 'ElevenLabs API error', status: response.status });
+    }
     const audioBuffer = await response.arrayBuffer();
     res.set('Content-Type', 'audio/mpeg');
     res.send(Buffer.from(audioBuffer));
